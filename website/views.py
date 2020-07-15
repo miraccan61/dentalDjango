@@ -24,4 +24,13 @@ def contact(request):
 
     else:
         # return the page
-        return render(request, 'contact.html', {})
+        return render(request, 'contact/contact.html', {})
+
+def services(request):
+    return render(request,'_service/service.html')
+
+def pricing(request):
+    return render(request,'prices/price.html')
+
+def about(request):
+    return render(request,'about/about.html')
