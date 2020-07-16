@@ -1,30 +1,32 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.core.mail import send_mail
-
+from .forms import AppoitmentForm,ContactForm
+from django.urls import reverse_lazy
 
 def home(request):
-    return render(request, 'home.html', {})
+    return render(request,'home.html')
+    
 
+def appointment(request):
+    if request.method == 'POST':
+        forms = AppoitmentForm(request.POST or None)
+        if forms.is_valid():      
+            forms.save()
+            return redirect('home')
+    else:
+        form = AppoitmentForm()
+        return render(request, 'appointment.html', {'form':form})
 
 def contact(request):
-    if request.method == "POST":
-        message_name = request.POST['message-name']
-        message_email = request.POST['message-email']
-        message = request.POST['message']
-
-        # sende mail
-        send_mail(
-            message_name,  # subject
-            message,  # message
-            message_email,  # from email
-            ['miraccan6161@gmail.com'],  # to email
-            fail_silently=False,
-        )
-        return render(request, 'contact.html', {'message_name': message_name})
-
+    if request.method == 'POST':
+        forms = ContactForm(request.POST or None)
+        if forms.is_valid():
+            forms.save()
+            return redirect('home')
     else:
-        # return the page
-        return render(request, 'contact/contact.html', {})
+        form=ContactForm()
+        return render(request, 'contact.html',{'form':form})
+
 
 def services(request):
     return render(request,'_service/service.html')
@@ -34,3 +36,4 @@ def pricing(request):
 
 def about(request):
     return render(request,'about/about.html')
+

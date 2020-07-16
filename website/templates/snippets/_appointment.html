@@ -1,0 +1,34 @@
+ {% load static %}
+ <!-- Book An Oppointment Area Start -->
+ <section class="book-an-oppointment-area section-padding-100 bg-img bg-gradient-overlay jarallax clearfix"
+ style="background-image: url({% static 'website/img/bg-img/12.jpg' %});">
+ <div class="container">
+     <div class="row">
+         <!-- Section Heading -->
+         <div class="col-12">
+             <div class="section-heading text-center white">
+                 <h2>Book An Apointment</h2>
+                 <div class="line"></div>
+             </div>
+         </div>
+     </div>
+     <div class="row">
+         <div class="col-12">
+             <!-- Appointment Form -->
+             <div class="appointment-form">
+                 <form action="{% url 'appointment' %}" method="POST">
+                    {% csrf_token %}
+                     <div class="row">
+                         <div class="col-md-12 text-white">
+                             {{form  }}
+                         <div class="col-12 text-center">
+                             <button type="submit" value="submit" class="btn dento-btn">Booking Now</button>
+                         </div>
+                     </div>
+                 </form>
+             </div>
+         </div>
+     </div>
+ </div>
+</section>
+<!-- Book An Oppointment Area End -->
