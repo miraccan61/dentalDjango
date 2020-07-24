@@ -15,7 +15,6 @@ class AppoitmentForm(ModelForm):
         self.fields['schedule_days'].widget.attrs.update({'class' : 'form-control'})
         self.fields['your_messagess'].widget.attrs.update({'class' : 'form-control mb-30'})
 
-
 class ContactForm(ModelForm):
     class Meta:
         model = Contact

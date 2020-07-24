@@ -5,5 +5,5 @@ class AppointmentAdmin(admin.ModelAdmin):
 admin.site.register(Appointment,AppointmentAdmin)
 
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ['your_name', 'your_mail','your_messagess']
+    list_display = ['your_name', 'your_mail','your_messagess','time_stamp']
 admin.site.register(Contact,ContactAdmin)
